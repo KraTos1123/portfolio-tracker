@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+import ClippedDrawer from "./components/Navbar";
+import {BrowserRouter as Router} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = createMuiTheme({
+    palette: {
+        palette: {
+            type: 'dark',
+        },
+        primary: {
+            // Purple and green play nicely together.
+            main: "#14b9dd",
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: '#dd3914',
+        },
+    },
+});
+
+export default function ButtonAppBar() {
+
+    return (
+        <ThemeProvider theme={theme}>
+
+            <Router>
+                <ClippedDrawer classes/>
+            </Router>
+        </ThemeProvider>
+
+    );
 }
 
-export default App;
+
